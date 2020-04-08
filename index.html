@@ -35,7 +35,9 @@ No known issues at the current.
 
 <script>
         var covid_count = 0; /* This defines the COVID-19 variable for the following covidAdd function's calculation. I changed the allergy fxn to covid add fxn. */
-        var gas_count = 0; /* This defines the gas variable for the following gasAdd function's caclculation. I changed the cold fxn to a gas add fxn. */
+        var cold_count = 0; /* This defines the cold variable for the following coldAdd function's caclculation. */
+	var flu_count = 0; /* This defines the flu variable for the following fluAdd function's caclculation. */
+	var allergy_count = 0; /* This defines the allergy variable for the following allergyAdd function's caclculation. */
 
         function covidAdd(){ /*This function will track the amount of covid answers pressed and add one each time to the total. */
             covid_count = covid_count + 1;
