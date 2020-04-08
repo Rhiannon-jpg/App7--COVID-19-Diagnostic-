@@ -88,9 +88,11 @@ No known issues at the current.
 		var fluPercent = ((flu_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for flu. */
 		var allergyPercent = ((allergy_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for allergy. */
 	}
-	
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript"> /*This is telling the computer what type of javascript is going to be used. */
+
+</script> <!-- I closed the script bar here to allow the graph to show up.-->
+	   
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"> /*This is telling the computer what type of javascript is going to be used. */
       google.charts.load("current", {packages:["corechart"]}); // This is where the donut chart is located on google.
       google.charts.setOnLoadCallback(drawChart); //This tells the computer to get the chart from google.
       function drawChart() { //This is a function that when called on tells the computer to display a donut chart with following information.
@@ -103,7 +105,7 @@ No known issues at the current.
           ['Sleep',    7]
         ]);
 
-        var options = { //This is a variable that defines how big the inside of dont will be cut out and the title of chart.
+        var options = { //This is a variable that defines how big the inside of donut will be cut out and the title of chart.
           title: 'My Daily Activities',
           pieHole: 0.4,
         };
