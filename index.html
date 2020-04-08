@@ -88,9 +88,32 @@ No known issues at the current.
 		var fluPercent = ((flu_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for flu. */
 		var allergyPercent = ((allergy_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for allergy. */
 	}
+	
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript"> /*This is telling the computer what type of javascript is going to be used. */
+      google.charts.load("current", {packages:["corechart"]}); // This is where the donut chart is located on google.
+      google.charts.setOnLoadCallback(drawChart); //This tells the computer to get the chart from google.
+      function drawChart() { //This is a function that when called on tells the computer to display a donut chart with following information.
+        var data = google.visualization.arrayToDataTable([ //This is a variable that defines the data that will be in the chart.
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = { //This is a variable that defines how big the inside of dont will be cut out and the title of chart.
+          title: 'My Daily Activities',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart')); //This variable is of the chart itself and should call the chart to the page.
+        chart.draw(data, options);
+      }
   </script>
-
-
+	   
+	   
 
 <style>	
 .body {
@@ -133,9 +156,8 @@ No known issues at the current.
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
  	
 	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-	
-	<h2>Location of the Appendix as pictured by Wikipedia Commons</h2> <!-- I added a URL pic of an appendix in a jacket-->
-	<center><img src="ttps://media.defense.gov/2020/Mar/13/2002267841/-1/-1/0/200309-D-NQ744-010.JPG"/></center> <!--I added this picture of the Corona virus to match the theme-->
+
+	<center><img src="https://media.defense.gov/2020/Mar/13/2002267841/-1/-1/0/200309-D-NQ744-010.JPG"/></center> <!--I added this picture of the Corona virus to match the theme-->
 	     
 <div class="page" id="one">
 	<div id="header" class="w3-container w3-flat-purple"> <!--I changed the color of the Header because I really despised the color scheme-->
@@ -292,6 +314,8 @@ No known issues at the current.
 	</div> <!-- I added onclick to the code so that the results are stored -->
 	</div> 
 </div>
+
+	<div id="donutchart" style="width: 900px; height: 500px;"></div> <!-- this should tell the donut chart to appear-->
 	
 <footer class="w3-bottom w3-container w3-flat-purple"> <!-- I changed the color for aesthetic purposes-->
 	<p>DIY!</p>
