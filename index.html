@@ -59,68 +59,21 @@ No known issues at the current.
             allergy_count = allergy_count + 1;
 		alert(allergy_count);//Adding an alert to each so that I know if something isn't being counted.
 	}
-	
-	function covidfluAdd(){ /* I added this function, which will add one to both covid count and flu count. */
-            covid_count = covid_count + 1;
-		alert(covid_count);//Adding an alert to each so that I know if something isn't being counted.
-	    flu_count = flu_count + 1;
-		alert(flu_count);//Adding an alert to each so that I know if something isn't being counted.
-        }
-	
-	function coldfluallAdd(){ /* I added this function, which will add one to both cold count, flu count, and allergy count. */
-	    flu_count = flu_count + 1;
-		alert(flu_count);//Adding an alert to each so that I know if something isn't being counted.
-	    cold_count = cold_count + 1;
-		alert(cold_count); //Adding an alert to each so that I know if something isn't being counted.
-	    allergy_count = allergy_count + 1;
-		alert(allergy_count);//Adding an alert to each so that I know if something isn't being counted.
-	}
-	
-	function coldfluAdd(){ /* I added this function, which will add one to both cold count and flu count. */
-            cold_count = cold_count + 1;
-		alert(cold_count); //Adding an alert to each so that I know if something isn't being counted.
-	    flu_count = flu_count + 1;
-		alert(flu_count);//Adding an alert to each so that I know if something isn't being counted.
-        }
-	
-	function coldallAdd(){ /* I added this function, which will add one to both cold count and allergies count. */
-            cold_count = cold_count + 1;
-		alert(cold_count); //Adding an alert to each so that I know if something isn't being counted.
-	    allergy_count = allergy_count + 1;
-		alert(allergy_count);//Adding an alert to each so that I know if something isn't being counted.
-        }
-	
-	function covidcoldallAdd(){ /* I added this function, which will add one to both cold count, covid count, and allergy count. */
-	    covid_count = covid_count + 1;
-		alert(covid_count); //Adding an alert to each so that I know if something isn't being counted.
-	    cold_count = cold_count + 1;
-		alert(cold_count); //Adding an alert to each so that I know if something isn't being counted.
-	    allergy_count = allergy_count + 1
-		alert(allergy_count);//Adding an alert to each so that I know if something isn't being counted.
-	}
-	
-	function GetResults(){ /* I added a Results function so that the results will actually show up on the result page. */
-		var coldPercent = ((cold_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for cold. */
-		var covidPercent = ((covid_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for covid. */
-		var fluPercent = ((flu_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for flu. */
-		var allergyPercent = ((allergy_count)/(cold_count + covid_count + allergy_count + flu_count)) *100; /* I added a variable to make a percentage for allergy. */
-		document.getElementById("results"); //This will actually call the results to the screen.
-	}
 
 </script> <!-- I closed the script bar here to allow the graph to show up.-->
 	   
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript"> /*This is telling the computer what type of javascript is going to be used. */
       google.charts.load("current", {packages:["corechart"]}); // This is where the donut chart is located on google.
-      google.charts.setOnLoadCallback(drawChart); //This tells the computer to get the chart from google.
+      //google.charts.setOnLoadCallback(drawChart); //This tells the computer to get the chart from google.
       function drawChart() { //This is a function that when called on tells the computer to display a donut chart with following information.
         var data = google.visualization.arrayToDataTable([ //This is a variable that defines the data that will be in the chart.
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['COVID-19',    covid_count],
+          ['Cold',      cold_count],
+          ['Flu',  flu_count],
+          ['Allergies', allergy_count],
+          ['Healthy',    healthy_count]
         ]);
 
         var options = { //This is a variable that defines how big the inside of donut will be cut out and the title of chart.
@@ -131,6 +84,7 @@ No known issues at the current.
         var chart = new google.visualization.PieChart(document.getElementById('donutchart')); //This variable is of the chart itself and should call the chart to the page.
         chart.draw(data, options);
       }
+	
   </script>
 	   
 	   
@@ -200,7 +154,7 @@ No known issues at the current.
 	
 	<div id="content" class="w3-container">
 	<p>Do you have a cough and how would you describe it?</p>   <!-- I changed the next question to the next symptom on the chart provided in google doc. -->
-	<a href="#three" onclick="covidfluAdd(); "class="w3-button w3-hover-indigo w3-round"> Common, Usually Dry </a> <!-- I changed the buttons to ones specific for what I'm testing. I also added the onclick covidflu botton to this line because they have the same answer choice. -->
+	<a href="#three" onclick="covidAdd();fluAdd(); "class="w3-button w3-hover-indigo w3-round"> Common, Usually Dry </a> <!-- I changed the buttons to ones specific for what I'm testing. I also added the onclick covidflu botton to this line because they have the same answer choice. -->
 	<a href="#three" onclick="coldAdd(); "class="w3-button w3-hover-indigo w3-round"> Common, Mild </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 3 so that the button will go to the third page. I also updated the buttons. -->
 	<a href="#three" onclick="allergyAdd(); "class="w3-button w3-hover-indigo w3-round"> Rare, usually dry </a> <!-- I added a button for seasonal allergies. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
@@ -213,7 +167,7 @@ No known issues at the current.
 	
 	<div id="content" class="w3-container">
 	<p>Have you experienced shortness of breath?</p>   <!-- I changed the next question to the next symptom on the chart provided in google doc. -->
-	<a href="#four" onclick="allAdd(); "class="w3-button w3-hover-indigo w3-round"> yes </a> <!-- I changed the buttons to ones specific for what I'm testing. -->
+	<a href="#four" onclick="allergyAdd(); fluAdd; covidAdd; "class="w3-button w3-hover-indigo w3-round"> yes </a> <!-- I changed the buttons to ones specific for what I'm testing. -->
 	<a href="#four" onclick="coldAdd(); "class="w3-button w3-hover-indigo w3-round"> no </a> <!-- I changed the button colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 4 so that the button will go to the fourth page. I also updated the buttons. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
 </div>
@@ -225,8 +179,8 @@ No known issues at the current.
 	
 	<div id="content" class="w3-container">
 	<p>Have you been experiencing sneezing?</p>   <!-- I changed the next question to the next symptom on the chart provided in google doc. -->
-	<a href="#five" onclick="covidfluAdd(); "class="w3-button w3-hover-indigo w3-round"> No </a> <!-- I changed the buttons to ones specific for what I'm testing, this should add one to covid and flu. -->
-	<a href="#five" onclick="coldallAdd(); "class="w3-button w3-hover-indigo w3-round"> Yes </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 5 so that the button will go to the fifth page. I also updated the buttons. This should add one to cold and one to allergy. -->
+	<a href="#five" onclick="covidAdd(); fluAdd; "class="w3-button w3-hover-indigo w3-round"> No </a> <!-- I changed the buttons to ones specific for what I'm testing, this should add one to covid and flu. -->
+	<a href="#five" onclick="coldAdd(); allergyAdd; "class="w3-button w3-hover-indigo w3-round"> Yes </a> <!-- I added a button and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 5 so that the button will go to the fifth page. I also updated the buttons. This should add one to cold and one to allergy. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
 </div>
 
@@ -251,7 +205,7 @@ No known issues at the current.
 	
 	<div id="content" class="w3-container">
 	<p>Have you experienced a sore throat?</p>   <!-- I changed the next question to the next symptom on the chart provided in googel doc. -->
-	<a href="#seven" onclick="covidfluAdd(); "class="w3-button w3-hover-indigo w3-round"> Sometimes </a> <!-- I changed the buttons to ones specific for what I'm testing. I also added the onclick covidflu botton to this line because they have the same answer choice. -->
+	<a href="#seven" onclick="covidAdd(); fluAdd; "class="w3-button w3-hover-indigo w3-round"> Sometimes </a> <!-- I changed the buttons to ones specific for what I'm testing. I also added the onclick covidflu botton to this line because they have the same answer choice. -->
 	<a href="#seven" onclick="coldAdd(); "class="w3-button w3-hover-indigo w3-round"> Common </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 7 so that the button will go to the seventh page. I also updated the buttons. -->
 	<a href="#seven" onclick="allergyAdd(); "class="w3-button w3-hover-indigo w3-round"> Sometimes, usually dry </a> <!-- I added a button for seasonal allergies. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
@@ -264,7 +218,7 @@ No known issues at the current.
 	
 	<div id="content" class="w3-container">
 	<p>Have you experienced a fevert?</p>   <!-- I changed the next question to the next symptom on the chart provided in google doc. -->
-	<a href="#eight" onclick="covidfluAdd(); "class="w3-button w3-hover-indigo w3-round"> Common </a> <!-- I changed the buttons to ones specific for what I'm testing. I also added the onclick covidflu botton to this line because they have the same answer choice. -->
+	<a href="#eight" onclick="covidAdd(); fluAdd; "class="w3-button w3-hover-indigo w3-round"> Common </a> <!-- I changed the buttons to ones specific for what I'm testing. I also added the onclick covidflu botton to this line because they have the same answer choice. -->
 	<a href="#eight" onclick="coldAdd(); "class="w3-button w3-hover-indigo w3-round"> Yes, a short period </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 8 so that the button will go to the eigth page. I also updated the buttons. -->
 	<a href="#eight" onclick="allergyAdd(); "class="w3-button w3-hover-indigo w3-round"> No </a> <!-- I added a button for seasonal allergies. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
@@ -278,7 +232,7 @@ No known issues at the current.
 	<div id="content" class="w3-container">
 	<p>Have you been feeling weak and tired?</p>   <!-- I changed the next question to the next symptom on the chart provided in google doc. -->
 	<a href="#nine" onclick="fluAdd(); "class="w3-button w3-hover-indigo w3-round"> Common </a> <!-- I changed the buttons to ones specific for what I'm testing. I also added the onclick covidflu botton to this line because they have the same answer choice. -->
-	<a href="#nine" onclick="covodcoldallAdd(); "class="w3-button w3-hover-indigo w3-round"> Sometimes </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 9 so that the button will go to the nineth page. I also updated the buttons. -->
+	<a href="#nine" onclick="covidAdd(); coldAdd; allergyAdd; "class="w3-button w3-hover-indigo w3-round"> Sometimes </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 9 so that the button will go to the nineth page. I also updated the buttons. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
 </div>
 
@@ -304,7 +258,7 @@ No known issues at the current.
     	<div id="content" class="w3-container">
         <p>How often do you have body aches and pains?</p>   <!-- I changed the first question to the first symptom on the chart provided in googel doc. -->
 	<a href="#eleven" onclick="covidAdd(); "class="w3-button w3-hover-indigo w3-round"> Sometimes </a> <!-- I changed the buttons to ones specific for what I'm testing. -->
-	<a href="#eleven" onclick="coldfluAdd(); "class="w3-button w3-hover-indigo w3-round"> Common </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 11 so that the button will go to the eleventh page. I also updated the buttons. -->
+	<a href="#eleven" onclick="coldAdd(); fluAdd; "class="w3-button w3-hover-indigo w3-round"> Common </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 11 so that the button will go to the eleventh page. I also updated the buttons. -->
 	<a href="#eleven" onclick="allergyAdd(); "class="w3-button w3-hover-indigo w3-round"> No </a> <!-- I added a button for seasonal allergies. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
 </div>
@@ -317,7 +271,7 @@ No known issues at the current.
     	<div id="content" class="w3-container">
         <p>How often do you have body aches and pains?</p>   <!-- I changed the first question to the first symptom on the chart provided in googel doc. -->
 	<a href="#twelve" onclick="covidAdd(); "class="w3-button w3-hover-indigo w3-round"> Sometimes </a> <!-- I changed the buttons to ones specific for what I'm testing. -->
-	<a href="#twelve" onclick="coldallAdd(); "class="w3-button w3-hover-indigo w3-round"> No </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 11 so that the button will go to the eleventh page. I also updated the buttons. -->
+	<a href="#twelve" onclick="coldAdd(); allergyAdd(); "class="w3-button w3-hover-indigo w3-round"> No </a> <!-- I added four buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 11 so that the button will go to the eleventh page. I also updated the buttons. -->
 	<a href="#twelve" onclick="fluAdd(); "class="w3-button w3-hover-indigo w3-round"> Sometimes (Only choose if you're a child) </a> <!-- I added a button for seasonal allergies. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
 </div>
@@ -325,17 +279,10 @@ No known issues at the current.
 <div class="page" id="twelve"> <!--I changed the page id again and got rid of a page. -->
 	<div class="w3-container w3-flat-pomegranate"> <!--I changed the color again. -->
 		<h1>Results</h1>
-	</div>
-	
-	<div id="content" class="w3-container">
-		<p id="results"> </p> <!--I changed the p id to results and put a placeholder text so that if something goes wrong I can troubleshoot. I deleted the place holder now that I know it works. -->
-	
-	<a onclick="GetResults();" class="w3-button w3-hover-indigo w3-round"> Results </a> <!--I added a button and changed its direction to call the results functionto the result page. -->
-	</div> <!-- I added onclick to the code so that the results are stored -->
-	</div> 
+	</div> <!-- I deleted the button and all the getResults function because the chart should automatically show up. -->
+	<a onclick="drawChart(); "class="w3-button w3-hover-indigo w3-round"> Results </a>
+	<div id="donutchart" style="width: 900px; height: 500px;"></div><!-- this should tell the donut chart to appear--> 
 </div>
-
-	<div id="donutchart" style="width: 900px; height: 500px;"></div> <!-- this should tell the donut chart to appear-->
 	
 <footer class="w3-bottom w3-container w3-flat-pomegranate"> <!-- I changed the color for aesthetic purposes-->
 	<p>DIY!</p>
