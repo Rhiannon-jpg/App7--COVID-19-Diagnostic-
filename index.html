@@ -42,28 +42,27 @@ No known issues at the current.
 	
         function covidAdd(){ /*This function will track the amount of covid answers pressed and add one each time to the total. */
             covid_count = covid_count + 1;
-		alert(covid_count);
 
         }
 
         function coldAdd(){ /*This function will track the amount of cold answers pressed and add one each time to the total. */
             cold_count = cold_count + 1;
-		alert(cold_count);//Adding an alert to each so that I know if something isn't being counted.
+	
         }
 	
         function fluAdd(){ /* I added this function, which will track the amount of flu answers pressed and add one each time to the total. */
             flu_count = flu_count + 1;
-		alert(flu_count);//Adding an alert to each so that I know if something isn't being counted.
+	
         }
 	
 	function allergyAdd(){ /* I added this function, which will track the amount of allergy answers pressed and add one each time to the total. */
             allergy_count = allergy_count + 1;
-		alert(allergy_count);//Adding an alert to each so that I know if something isn't being counted.
+	
 	}
 	
 	function healthyAdd(){ /* I added this function, which will track the amount of healthy answers pressed and add one each time to the total. */
             healthy_count = healthy_count + 1;
-		alert(healthy_count);//Adding an alert to each so that I know if something isn't being counted.
+	
 	}
 
 </script> <!-- I closed the script bar here to allow the graph to show up.-->
@@ -174,7 +173,7 @@ No known issues at the current.
 	
 	<div id="content" class="w3-container">
 	<p>Have you experienced shortness of breath?</p>   <!-- I changed the next question to the next symptom on the chart provided in google doc. -->
-	<a href="#four" onclick="covidAdd; "class="w3-button w3-hover-red w3-round"> Sometimes </a> <!-- I changed the buttons to ones specific for what I'm testing and made the button red. -->
+	<a href="#four" onclick="covidAdd(); "class="w3-button w3-hover-red w3-round"> Sometimes </a> <!-- I changed the buttons to ones specific for what I'm testing and made the button red. -->
 	<a href="#four" onclick="coldAdd(); allergyAdd(); fluAdd; healthyAdd(); "class="w3-button w3-hover-red w3-round"> No </a> <!-- I changed the button colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 4 so that the button will go to the fourth page. I also updated the buttons, made them red, and link to add function for flu, cold, allergy, and healthy. -->
 	</div> <!-- I added onclick to the code so that the results are stored -->
 </div>
@@ -198,7 +197,7 @@ No known issues at the current.
 	
 	<div id="content" class="w3-container">
 	<p>How often do you experience a runny or stuffy nose?</p>   <!-- I changed the next question to the next symptom on the chart provided in googel doc. -->
-	<a href="#six" onclick="covidAdd(); "class="w3-button w3-hover-indigo w3-round"> Rarely </a> <!-- I changed the buttons to ones specific for what I'm testing, made them red also. -->
+	<a href="#six" onclick="covidAdd(); "class="w3-button w3-hover-red w3-round"> Rarely </a> <!-- I changed the buttons to ones specific for what I'm testing, made them red also. -->
 	<a href="#six" onclick="coldAdd(); allergyAdd();"class="w3-button w3-hover-red w3-round"> Commonly </a> <!-- I added these buttons and changed their colors to "hover colors" so when you hover over them, they change as shown how to do in w3schools.com. I also switched the href= to 6 so that the button will go to the sixth page. I added cold add and allergy add functions to this same red button.-->
     	<a href="#six" onclick="fluAdd(); "class="w3-button w3-hover-red w3-round"> Sometimes </a> <!-- I added a button for Flu symptoms, made it red. -->
 	<a href="#six" onclick="healthyAdd(); "class="w3-button w3-hover-red w3-round"> Never Experienced </a> <!-- I added this button for the option of being healhty/not showing that symptom, made it red.-->
